@@ -1,0 +1,131 @@
+main {
+  display: grid;
+  gap: 4rem;
+  padding: 2rem;
+}
+
+.city-input-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.forecast-list-container {
+  display: grid;
+  gap: 4rem;
+}
+
+.forecast-list-length {
+  font-style: italic;
+  opacity: 0.675;
+  text-align: center;
+}
+
+.forecast-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.forecast-card {
+  background-color: var(--color-medium);
+  border: 1px solid var(--color-light);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.forecast-header,
+.forecast-primary {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.city-name {
+  font-size: 2.4rem;
+}
+
+.city-time {
+  font-size: 1.4rem;
+}
+
+.forecast-primary-temperature-and-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.forecast-temperature {
+  font-size: 4rem;
+}
+
+.forecast-description {
+  font-size: 1.4rem;
+}
+
+.forecast-condition-icon {
+  width: 6.4rem;
+}
+
+.forecast-secondary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.secondary-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.air-quality,
+.air-quality-text,
+.air-quality-temperature,
+.feels-like,
+.feels-like-text,
+.feels-like-temperature,
+.humidity,
+.humidity-text,
+.humidity-percentage {
+  text-align: center;
+}
+
+.air-quality-text,
+.feels-like-text,
+.humidity-text {
+  font-size: 1.4rem;
+}
+
+.air-quality-temperature,
+.feels-like-temperature,
+.humidity-percentage {
+  font-size: 1.8rem;
+  margin-top: 0.5rem;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  main {
+    padding: 2rem 10rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  main {
+    padding: 2rem 30rem;
+  }
+  .forecast-list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}

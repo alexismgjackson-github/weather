@@ -1,0 +1,23 @@
+header {
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  font-size: 2.6rem;
+  text-transform: uppercase;
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  header {
+    padding: 2rem 10rem;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  header {
+    padding: 2rem 30rem;
+  }
+}
