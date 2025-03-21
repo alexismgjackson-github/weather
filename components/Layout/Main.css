@@ -9,6 +9,10 @@ main {
   gap: 1.5rem;
 }
 
+.city-input-btn {
+  background-color: var(--color-extralight);
+}
+
 .forecast-list-container {
   display: grid;
   gap: 4rem;
@@ -117,6 +121,9 @@ main {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
+  .forecast-list {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
@@ -129,10 +136,7 @@ main {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   main {
-    padding: 2rem 30rem 6rem 30rem;
-  }
-  .forecast-list {
-    grid-template-columns: 1fr 1fr;
+    padding: 2rem 25rem 6rem 25rem;
   }
 }
 

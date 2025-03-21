@@ -2,8 +2,8 @@
   --font-primary: "Rubik", sans-serif;
   --color-extralight: #fff;
   --color-light: #c0c0c0;
-  --color-medium: hsl(0, 0%, 15%);
-  --color-bold: #111111;
+  --color-medium: #161e3b;
+  --color-bold: #0b0f1e;
   --color-error: #ff0000;
 }
 
@@ -71,6 +71,10 @@ button {
 input {
   background-color: var(--color-bold);
   border: 1px solid var(--color-extralight);
+  color: var(--color-extralight);
+}
+
+::placeholder {
   color: var(--color-extralight);
 }
 

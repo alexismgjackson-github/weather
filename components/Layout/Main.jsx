@@ -3,6 +3,10 @@ import "./Main.css";
 export default function Main() {
   // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
+  // API KEY: 7bc7ad4ec537b6ef42eb081732e0ccca
+
+  // Use OpenWeatherMap's Current Weather API
+
   return (
     <>
       <main>
