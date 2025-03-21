@@ -1,6 +1,8 @@
 import "./Main.css";
 
 export default function Main() {
+  // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+
   return (
     <>
       <main>
@@ -27,6 +29,7 @@ export default function Main() {
           <ul className="forecast-list">
             <li className="forecast-card">
               <div className="forecast-header">
+                <span className="city-name">Orlando</span>
                 <button
                   className="remove-forecast-btn"
                   aria-label="Remove this city forecast"
@@ -37,8 +40,6 @@ export default function Main() {
                     alt="Remove icon"
                   />
                 </button>
-                <span className="city-name">Orlando</span>
-                <span className="city-time">10:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
@@ -91,6 +92,7 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <span className="city-name">New York</span>
                 <button
                   className="remove-forecast-btn"
                   aria-label="Remove this city forecast"
@@ -101,8 +103,6 @@ export default function Main() {
                     alt="Remove icon"
                   />
                 </button>
-                <span className="city-name">New York</span>
-                <span className="city-time">10:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
@@ -155,6 +155,7 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <span className="city-name">Seattle</span>
                 <button
                   className="remove-forecast-btn"
                   aria-label="Remove this city forecast"
@@ -165,8 +166,6 @@ export default function Main() {
                     alt="Remove icon"
                   />
                 </button>
-                <span className="city-name">Seattle</span>
-                <span className="city-time">7:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
@@ -219,6 +218,7 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <span className="city-name">Tokyo</span>
                 <button
                   className="remove-forecast-btn"
                   aria-label="Remove this city forecast"
@@ -229,8 +229,6 @@ export default function Main() {
                     alt="Remove icon"
                   />
                 </button>
-                <span className="city-name">Tokyo</span>
-                <span className="city-time">11:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
