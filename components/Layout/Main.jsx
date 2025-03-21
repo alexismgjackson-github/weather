@@ -27,12 +27,22 @@ export default function Main() {
           <ul className="forecast-list">
             <li className="forecast-card">
               <div className="forecast-header">
+                <button
+                  className="remove-forecast-btn"
+                  aria-label="Remove this city forecast"
+                >
+                  <img
+                    className="remove-icon"
+                    src="assets/icons/remove.svg"
+                    alt="Remove icon"
+                  />
+                </button>
                 <span className="city-name">Orlando</span>
                 <span className="city-time">10:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">72F</span>
+                  <span className="forecast-temperature">72&deg;F</span>
                   <span className="forecast-description">Sunny</span>
                 </div>
                 <span className="forecast-condition">
@@ -64,7 +74,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">74F</div>
+                  <div className="feels-like-temperature">74&deg;F</div>
                 </div>
                 <div className="humidity-container">
                   <div className="humidity">
@@ -81,12 +91,22 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <button
+                  className="remove-forecast-btn"
+                  aria-label="Remove this city forecast"
+                >
+                  <img
+                    className="remove-icon"
+                    src="assets/icons/remove.svg"
+                    alt="Remove icon"
+                  />
+                </button>
                 <span className="city-name">New York</span>
                 <span className="city-time">10:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">47F</span>
+                  <span className="forecast-temperature">47&deg;F</span>
                   <span className="forecast-description">Cloudy</span>
                 </div>
                 <span className="forecast-condition">
@@ -118,7 +138,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">39F</div>
+                  <div className="feels-like-temperature">39&deg;F</div>
                 </div>
                 <div className="humidity-container">
                   <div className="humidity">
@@ -135,12 +155,22 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <button
+                  className="remove-forecast-btn"
+                  aria-label="Remove this city forecast"
+                >
+                  <img
+                    className="remove-icon"
+                    src="assets/icons/remove.svg"
+                    alt="Remove icon"
+                  />
+                </button>
                 <span className="city-name">Seattle</span>
                 <span className="city-time">7:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">42F</span>
+                  <span className="forecast-temperature">42&deg;F</span>
                   <span className="forecast-description">Rainy</span>
                 </div>
                 <span className="forecast-condition">
@@ -172,7 +202,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">31F</div>
+                  <div className="feels-like-temperature">31&deg;F</div>
                 </div>
                 <div className="humidity-container">
                   <div className="humidity">
@@ -189,12 +219,22 @@ export default function Main() {
             </li>
             <li className="forecast-card">
               <div className="forecast-header">
+                <button
+                  className="remove-forecast-btn"
+                  aria-label="Remove this city forecast"
+                >
+                  <img
+                    className="remove-icon"
+                    src="assets/icons/remove.svg"
+                    alt="Remove icon"
+                  />
+                </button>
                 <span className="city-name">Tokyo</span>
                 <span className="city-time">11:44 am</span>
               </div>
               <div className="forecast-primary">
                 <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">42F</span>
+                  <span className="forecast-temperature">42&deg;F</span>
                   <span className="forecast-description">Mostly Clear</span>
                 </div>
                 <span className="forecast-condition">
@@ -226,7 +266,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">41F</div>
+                  <div className="feels-like-temperature">41&deg;F</div>
                 </div>
                 <div className="humidity-container">
                   <div className="humidity">

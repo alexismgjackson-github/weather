@@ -1,12 +1,12 @@
 main {
   display: grid;
   gap: 4rem;
-  padding: 2rem;
+  padding: 2rem 2rem 6rem 2rem;
 }
 
 .city-input-form {
   display: grid;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .forecast-list-container {
@@ -22,7 +22,7 @@ main {
 
 .forecast-list {
   display: grid;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .forecast-card {
@@ -31,7 +31,7 @@ main {
   border-radius: 0.5rem;
   display: grid;
   gap: 3rem;
-  padding: 2rem;
+  padding: 1.5rem;
 }
 
 .forecast-header,
@@ -41,12 +41,26 @@ main {
   justify-content: space-between;
 }
 
+.remove-forecast-btn {
+  align-items: center;
+  background-color: inherit;
+  display: flex;
+  height: 2.6rem;
+  padding: 0;
+  width: 2.6rem;
+}
+
+.remove-icon {
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
 .city-name {
   font-size: 2.4rem;
 }
 
 .city-time {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .forecast-primary-temperature-and-description {
@@ -119,7 +133,7 @@ main {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   main {
-    padding: 2rem 30rem;
+    padding: 2rem 30rem 6rem 30rem;
   }
   .forecast-list {
     grid-template-columns: 1fr 1fr;
