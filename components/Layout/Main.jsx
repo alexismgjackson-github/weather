@@ -90,7 +90,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">55%</div>
+                  <div className="humidity-percentage">55&#37;</div>
                 </div>
               </div>
             </li>
@@ -153,7 +153,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">84%</div>
+                  <div className="humidity-percentage">84&#37;</div>
                 </div>
               </div>
             </li>
@@ -216,7 +216,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">87%</div>
+                  <div className="humidity-percentage">87&#37;</div>
                 </div>
               </div>
             </li>
@@ -279,7 +279,7 @@ export default function Main() {
                     />
                   </div>
                   <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">81%</div>
+                  <div className="humidity-percentage">81&#37;</div>
                 </div>
               </div>
             </li>

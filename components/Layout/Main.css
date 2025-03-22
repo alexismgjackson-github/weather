@@ -11,6 +11,7 @@ main {
 
 .city-input-btn {
   background-color: var(--color-extralight);
+  letter-spacing: 0.375rem;
 }
 
 .forecast-list-container {
