@@ -1,12 +1,21 @@
 main {
   display: grid;
   gap: 4rem;
-  padding: 2rem 2rem 6rem 2rem;
+  padding: 0rem 2rem 6rem 2rem;
 }
 
 .city-input-form {
   display: grid;
-  gap: 1.5rem;
+}
+
+.city-input {
+  margin: 1.5rem 0;
+}
+
+.input-message {
+  color: var(--color-highlight);
+  font-size: 1.4rem;
+  height: 1.4rem;
 }
 
 .city-input-btn {
@@ -91,9 +100,9 @@ main {
   width: 2.4rem;
 }
 
-.air-quality,
-.air-quality-text,
-.air-quality-temperature,
+.visibility,
+.visibility-text,
+.visibility-temperature,
 .feels-like,
 .feels-like-text,
 .feels-like-temperature,
@@ -103,13 +112,13 @@ main {
   text-align: center;
 }
 
-.air-quality-text,
+.visibility-text,
 .feels-like-text,
 .humidity-text {
   font-size: 1.4rem;
 }
 
-.air-quality-temperature,
+.visibility-temperature,
 .feels-like-temperature,
 .humidity-percentage {
   font-size: 1.8rem;

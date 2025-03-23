@@ -4,7 +4,7 @@
   --color-light: #a6a6a6;
   --color-medium: #161e3b;
   --color-bold: #0b0f1e;
-  --color-error: #ff0000;
+  --color-highlight: #ff0000;
 }
 
 *,
@@ -107,6 +107,10 @@ li {
 img {
   border-radius: 1rem;
   width: 100%;
+}
+
+:disabled {
+  opacity: 0.5rem;
 }
 
 /* Medium devices (landscape tablets, 768px and up) */

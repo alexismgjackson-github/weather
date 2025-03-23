@@ -1,22 +1,77 @@
+import { useState } from "react";
+
 import "./Main.css";
+import ForecastCard from "../../components/Forecast/ForecastCard.jsx";
 
 export default function Main() {
-  // https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
+  const [city, setCity] = useState("");
+  const [forecastData, setForecastData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [inputMessage, setInputMessage] = useState("");
+  const apiKey = import.meta.env.VITE_FORECAST_API_KEY;
+  const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
-  // API KEY: 7bc7ad4ec537b6ef42eb081732e0ccca
+  const fetchCityForecast = (event) => {
+    event.preventDefault();
 
-  // Use OpenWeatherMap's Current Weather API
+    setLoading(true);
+    setError(null);
+    setInputMessage("");
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.error) {
+          setInputMessage("Please enter a valid city");
+          setLoading(false);
+        } else {
+          console.log(data);
+          setForecastData((prevData) => [
+            ...prevData,
+            {
+              city: data.location.name,
+              temperature: data.current.temp_f,
+              text: data.current.condition.text,
+              feels_like: data.current.feelslike_f,
+              visibility: data.current.vis_miles,
+              humidity: data.current.humidity,
+            },
+          ]);
+          setLoading(false);
+        }
+      })
+      .catch((error) => {
+        setError(error);
+        setLoading(false);
+      });
+
+    setCity("");
+    setInputMessage("");
+  };
+
+  const handleInputChange = (event) => {
+    setCity(event.target.value);
+  };
 
   return (
     <>
       <main>
         <section className="city-input-container">
-          <form className="city-input-form">
+          <form
+            className="city-input-form"
+            id="city-input-form"
+            onSubmit={fetchCityForecast}
+          >
+            <span className="input-message">{inputMessage}</span>
             <input
               type="text"
               className="city-input"
               placeholder="Type in a city..."
               aria-label="Type in a city to get the weather forecast"
+              onChange={handleInputChange}
+              value={city}
+              required
             />
             <button
               className="city-input-btn"
@@ -28,261 +83,12 @@ export default function Main() {
         </section>
         <section className="forecast-list-container">
           <span className="forecast-list-length">
-            <p className="length">4 total cities found</p>
+            <p className="length">{forecastData.length} total cities found</p>
           </span>
           <ul className="forecast-list">
-            <li className="forecast-card">
-              <div className="forecast-header">
-                <span className="city-name">Orlando</span>
-                <button
-                  className="remove-forecast-btn"
-                  aria-label="Remove this city forecast"
-                >
-                  <img
-                    className="remove-icon"
-                    src="assets/icons/remove.svg"
-                    alt="Remove icon"
-                  />
-                </button>
-              </div>
-              <div className="forecast-primary">
-                <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">72&deg;F</span>
-                  <span className="forecast-description">Sunny</span>
-                </div>
-                <span className="forecast-condition">
-                  <img
-                    src="/assets/icons/sunny.svg"
-                    alt="Current weather icon"
-                    className="forecast-condition-icon"
-                  />
-                </span>
-              </div>
-              <div className="forecast-secondary">
-                <div className="air-quality-container">
-                  <div className="air-quality">
-                    <img
-                      src="/assets/icons/air-quality.svg"
-                      alt="Air quality icon"
-                      className="air-quality-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="air-quality-text">Air quality</span>
-                  <div className="air-quality-temperature">20 Good</div>
-                </div>
-                <div className="feels-like-container">
-                  <div className="feels-like">
-                    <img
-                      src="/assets/icons/feels-like.svg"
-                      alt="Feels like icon"
-                      className="feels-like-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">74&deg;F</div>
-                </div>
-                <div className="humidity-container">
-                  <div className="humidity">
-                    <img
-                      src="/assets/icons/humidity.svg"
-                      alt="Humidity icon"
-                      className="humidity-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">55&#37;</div>
-                </div>
-              </div>
-            </li>
-            <li className="forecast-card">
-              <div className="forecast-header">
-                <span className="city-name">New York</span>
-                <button
-                  className="remove-forecast-btn"
-                  aria-label="Remove this city forecast"
-                >
-                  <img
-                    className="remove-icon"
-                    src="assets/icons/remove.svg"
-                    alt="Remove icon"
-                  />
-                </button>
-              </div>
-              <div className="forecast-primary">
-                <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">47&deg;F</span>
-                  <span className="forecast-description">Cloudy</span>
-                </div>
-                <span className="forecast-condition">
-                  <img
-                    src="/assets/icons/cloudy.svg"
-                    alt="Current weather icon"
-                    className="forecast-condition-icon"
-                  />
-                </span>
-              </div>
-              <div className="forecast-secondary">
-                <div className="air-quality-container">
-                  <div className="air-quality">
-                    <img
-                      src="/assets/icons/air-quality.svg"
-                      alt="Air quality icon"
-                      className="air-quality-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="air-quality-text">Air quality</span>
-                  <div className="air-quality-temperature">30 Good</div>
-                </div>
-                <div className="feels-like-container">
-                  <div className="feels-like">
-                    <img
-                      src="/assets/icons/feels-like.svg"
-                      alt="Feels like icon"
-                      className="feels-like-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">39&deg;F</div>
-                </div>
-                <div className="humidity-container">
-                  <div className="humidity">
-                    <img
-                      src="/assets/icons/humidity.svg"
-                      alt="Humidity icon"
-                      className="humidity-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">84&#37;</div>
-                </div>
-              </div>
-            </li>
-            <li className="forecast-card">
-              <div className="forecast-header">
-                <span className="city-name">Seattle</span>
-                <button
-                  className="remove-forecast-btn"
-                  aria-label="Remove this city forecast"
-                >
-                  <img
-                    className="remove-icon"
-                    src="assets/icons/remove.svg"
-                    alt="Remove icon"
-                  />
-                </button>
-              </div>
-              <div className="forecast-primary">
-                <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">42&deg;F</span>
-                  <span className="forecast-description">Rainy</span>
-                </div>
-                <span className="forecast-condition">
-                  <img
-                    src="/assets/icons/rainy.svg"
-                    alt="Current weather icon"
-                    className="forecast-condition-icon"
-                  />
-                </span>
-              </div>
-              <div className="forecast-secondary">
-                <div className="air-quality-container">
-                  <div className="air-quality">
-                    <img
-                      src="/assets/icons/air-quality.svg"
-                      alt="Air quality icon"
-                      className="air-quality-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="air-quality-text">Air quality</span>
-                  <div className="air-quality-temperature">39 Good</div>
-                </div>
-                <div className="feels-like-container">
-                  <div className="feels-like">
-                    <img
-                      src="/assets/icons/feels-like.svg"
-                      alt="Feels like icon"
-                      className="feels-like-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">31&deg;F</div>
-                </div>
-                <div className="humidity-container">
-                  <div className="humidity">
-                    <img
-                      src="/assets/icons/humidity.svg"
-                      alt="Humidity icon"
-                      className="humidity-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">87&#37;</div>
-                </div>
-              </div>
-            </li>
-            <li className="forecast-card">
-              <div className="forecast-header">
-                <span className="city-name">Tokyo</span>
-                <button
-                  className="remove-forecast-btn"
-                  aria-label="Remove this city forecast"
-                >
-                  <img
-                    className="remove-icon"
-                    src="assets/icons/remove.svg"
-                    alt="Remove icon"
-                  />
-                </button>
-              </div>
-              <div className="forecast-primary">
-                <div className="forecast-primary-temperature-and-description">
-                  <span className="forecast-temperature">42&deg;F</span>
-                  <span className="forecast-description">Mostly Clear</span>
-                </div>
-                <span className="forecast-condition">
-                  <img
-                    src="/assets/icons/sunny.svg"
-                    alt="Current weather icon"
-                    className="forecast-condition-icon"
-                  />
-                </span>
-              </div>
-              <div className="forecast-secondary">
-                <div className="air-quality-container">
-                  <div className="air-quality">
-                    <img
-                      src="/assets/icons/air-quality.svg"
-                      alt="Air quality icon"
-                      className="air-quality-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="air-quality-text">Air quality</span>
-                  <div className="air-quality-temperature">43 Good</div>
-                </div>
-                <div className="feels-like-container">
-                  <div className="feels-like">
-                    <img
-                      src="/assets/icons/feels-like.svg"
-                      alt="Feels like icon"
-                      className="feels-like-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="feels-like-text">Feels like</span>
-                  <div className="feels-like-temperature">41&deg;F</div>
-                </div>
-                <div className="humidity-container">
-                  <div className="humidity">
-                    <img
-                      src="/assets/icons/humidity.svg"
-                      alt="Humidity icon"
-                      className="humidity-icon secondary-icon"
-                    />
-                  </div>
-                  <span className="humidity-text">Humidity</span>
-                  <div className="humidity-percentage">81&#37;</div>
-                </div>
-              </div>
-            </li>
+            {forecastData.map((forecast, index) => (
+              <ForecastCard key={index} forecast={forecast} />
+            ))}
           </ul>
         </section>
       </main>
