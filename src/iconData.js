@@ -1,3 +1,26 @@
+function getWeatherIcon(text) {
+  switch (id) {
+    case "Sunny":
+      return "./assets/icons/sunny.svg";
+    case "Partly cloudy":
+      return "./assets/icons/cloudy.svg";
+    case "Cloudy":
+      return "./assets/icons/cloudy.svg";
+    case "Overcast":
+      return "./assets/icons/cloudy.svg";
+    case "Mist":
+      return "./assets/icons/misty.svg";
+    case "Patchy rain possible":
+      return "./assets/icons/rainy.svg";
+    case "Patchy snow possible":
+      return "./assets/icons/snowy.svg";
+    default:
+      return null;
+  }
+}
+
+export { getMovieGenreName };
+
 /*
 
 [

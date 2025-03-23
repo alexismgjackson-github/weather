@@ -1,7 +1,6 @@
 import { useState } from "react";
-
-import "./Main.css";
 import ForecastCard from "../../components/Forecast/ForecastCard.jsx";
+import "./Main.css";
 
 export default function Main() {
   const [city, setCity] = useState("");
