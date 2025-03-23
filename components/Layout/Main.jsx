@@ -14,10 +14,6 @@ export default function Main() {
   const fetchCityForecast = (event) => {
     event.preventDefault();
 
-    setLoading(true);
-    setError(null);
-    setInputMessage("");
-
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
@@ -27,7 +23,6 @@ export default function Main() {
         } else {
           console.log(data);
           setForecastData((prevData) => [
-            ...prevData,
             {
               city: data.location.name,
               temperature: data.current.temp_f,
@@ -36,6 +31,7 @@ export default function Main() {
               visibility: data.current.vis_miles,
               humidity: data.current.humidity,
             },
+            ...prevData,
           ]);
           setLoading(false);
         }
