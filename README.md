@@ -4,7 +4,7 @@ Weather is a fully responsive app allows the user to search the realtime weather
 
 ## FEATURES
 
-- Real-time Weather App
+- Real-time Weather List
 
 ## TECHNOLOGIES
 
