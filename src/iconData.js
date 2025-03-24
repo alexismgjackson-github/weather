@@ -1,4 +1,6 @@
 const getWeatherIcon = (text) => {
+  // helps map specific weather conditions (provided as text) to their corresponding weather icons
+  // if the condition doesn't match, the function returns null, no icon should be displayed
   switch (text) {
     case "Sunny":
       return "/assets/icons/sunny.svg";

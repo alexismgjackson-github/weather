@@ -12,7 +12,7 @@ export default function ForecastCard(props) {
           <button
             className="remove-weather-btn"
             aria-label="Remove this city weather"
-            onClick={() => props.deleteWeather(props.weather.id)}
+            onClick={() => props.deleteWeather(props.weather.id)} // remove a specific weather entry by filtering out the entry with the matching id
           >
             <img
               className="remove-icon"
@@ -29,7 +29,7 @@ export default function ForecastCard(props) {
           </div>
           <span className="weather-condition">
             <img
-              src={getWeatherIcon(props.weather.text)}
+              src={getWeatherIcon(props.weather.text)} // gets the corresponding weather icon path based on the real-time weather
               alt="Current weather icon"
               className="weather-condition-icon"
             />
