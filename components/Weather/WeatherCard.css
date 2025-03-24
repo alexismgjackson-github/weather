@@ -1,0 +1,89 @@
+.weather-card {
+  background-color: var(--color-medium);
+  border: 1px solid var(--color-light);
+  border-radius: 0.5rem;
+  display: grid;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.weather-header,
+.weather-primary {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.remove-weather-btn {
+  align-items: center;
+  background-color: inherit;
+  display: flex;
+  height: 2.6rem;
+  padding: 0;
+  width: 2.6rem;
+}
+
+.remove-icon {
+  height: 2.6rem;
+  width: 2.6rem;
+}
+
+.location-name {
+  font-size: 1.8rem;
+}
+
+.weather-primary-temperature-and-description {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-temperature {
+  font-size: 5.5rem;
+}
+
+.weather-condition {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-condition-icon {
+  height: 4.8rem;
+  width: 4.8rem;
+}
+
+.weather-description {
+  font-size: 1.4rem;
+  margin-top: 0.5rem;
+}
+
+.weather-secondary {
+  display: flex;
+  justify-content: space-between;
+}
+
+.secondary-icon {
+  height: 2.4rem;
+  width: 2.4rem;
+}
+
+.visibility-text,
+.feels-like-text,
+.humidity-text {
+  font-size: 1.4rem;
+}
+
+.visibility,
+.feels-like,
+.humidity,
+.visibility-mileage,
+.feels-like-temperature,
+.humidity-percentage {
+  text-align: center;
+}
+
+.visibility-mileage,
+.feels-like-temperature,
+.humidity-percentage {
+  margin-top: 0.5rem;
+}

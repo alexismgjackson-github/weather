@@ -1,17 +1,28 @@
-import { useState } from "react";
-import ForecastCard from "../../components/Forecast/ForecastCard.jsx";
+import { useState, useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
+import WeatherCard from "../Weather/WeatherCard.jsx";
 import "./Main.css";
 
 export default function Main() {
   const [city, setCity] = useState("");
-  const [forecastData, setForecastData] = useState([]);
+
+  const [weatherData, setWeatherData] = useState(
+    localStorage.getItem("weather")
+      ? JSON.parse(localStorage.getItem("weather"))
+      : []
+  );
+
   const [loading, setLoading] = useState(true);
+
   const [error, setError] = useState(null);
+
   const [inputMessage, setInputMessage] = useState("");
+
   const apiKey = import.meta.env.VITE_FORECAST_API_KEY;
+
   const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
-  const fetchCityForecast = (event) => {
+  const fetchCityWeather = (event) => {
     event.preventDefault();
 
     fetch(url)
@@ -22,14 +33,16 @@ export default function Main() {
           setLoading(false);
         } else {
           console.log(data);
-          setForecastData((prevData) => [
+          setWeatherData((prevData) => [
             {
               city: data.location.name,
+              country: data.location.country,
               temperature: data.current.temp_f,
               text: data.current.condition.text,
               feels_like: data.current.feelslike_f,
               visibility: data.current.vis_miles,
               humidity: data.current.humidity,
+              id: uuidv4(),
             },
             ...prevData,
           ]);
@@ -49,6 +62,14 @@ export default function Main() {
     setCity(event.target.value);
   };
 
+  const deleteWeather = (id) => {
+    setWeatherData(weatherData.filter((weather) => weather.id !== id));
+  };
+
+  useEffect(() => {
+    localStorage.setItem("weather", JSON.stringify(weatherData));
+  }, [weatherData]);
+
   return (
     <>
       <main>
@@ -56,33 +77,37 @@ export default function Main() {
           <form
             className="city-input-form"
             id="city-input-form"
-            onSubmit={fetchCityForecast}
+            onSubmit={fetchCityWeather}
           >
             <span className="input-message">{inputMessage}</span>
             <input
               type="text"
               className="city-input"
               placeholder="Type in a city..."
-              aria-label="Type in a city to get the weather forecast"
+              aria-label="Type in a city to get the realtime weather"
               onChange={handleInputChange}
               value={city}
               required
             />
             <button
               className="city-input-btn"
-              aria-label="Search the city's weather forecast"
+              aria-label="Get the city's realtime weather"
             >
               Search
             </button>
           </form>
         </section>
-        <section className="forecast-list-container">
-          <span className="forecast-list-length">
-            <p className="length">{forecastData.length} total cities found</p>
+        <section className="weather-list-container">
+          <span className="weather-list-length">
+            <p className="length">{weatherData.length} total cities found</p>
           </span>
-          <ul className="forecast-list">
-            {forecastData.map((forecast, index) => (
-              <ForecastCard key={index} forecast={forecast} />
+          <ul className="weather-list">
+            {weatherData.map((weather) => (
+              <WeatherCard
+                key={weather.id}
+                weather={weather}
+                deleteWeather={deleteWeather}
+              />
             ))}
           </ul>
         </section>

@@ -8,14 +8,14 @@ main {
   display: grid;
 }
 
-.city-input {
-  margin: 1.5rem 0;
-}
-
 .input-message {
   color: var(--color-highlight);
   font-size: 1.4rem;
   height: 1.4rem;
+}
+
+.city-input {
+  margin: 1.5rem 0;
 }
 
 .city-input-btn {
@@ -23,18 +23,18 @@ main {
   letter-spacing: 0.375rem;
 }
 
-.forecast-list-container {
+.weather-list-container {
   display: grid;
   gap: 4rem;
 }
 
-.forecast-list-length {
+.weather-list-length {
   font-style: italic;
   opacity: 0.675;
   text-align: center;
 }
 
-.forecast-list {
+.weather-list {
   display: grid;
   gap: 3rem;
 }
@@ -45,7 +45,7 @@ main {
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-  .forecast-list {
+  .weather-list {
     grid-template-columns: 1fr 1fr;
   }
 }
