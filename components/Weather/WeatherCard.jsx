@@ -7,7 +7,7 @@ export default function ForecastCard(props) {
       <li className="weather-card">
         <div className="weather-header">
           <span className="location-name">
-            {props.weather.city}, {props.weather.country}
+            {props.weather.location}, {props.weather.country}
           </span>
           <button
             className="remove-weather-btn"
@@ -24,7 +24,7 @@ export default function ForecastCard(props) {
         <div className="weather-primary">
           <div className="weather-primary-temperature-and-description">
             <span className="weather-temperature">
-              {props.weather.temperature}&deg;F
+              {props.weather.fahrenheit}&deg;F
             </span>
           </div>
           <span className="weather-condition">

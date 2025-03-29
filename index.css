@@ -13,7 +13,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  transition: 0.5s;
 }
 
 html {
@@ -22,6 +21,20 @@ html {
 
 html:focus-within {
   scroll-behavior: smooth;
+}
+
+html[data-theme="light"] {
+  --color-extralight: #0b0f1e;
+  --color-light: #a6a6a6;
+  --color-medium: #fff;
+  --color-bold: #f0f0f0;
+}
+
+html[data-theme="dark"] {
+  --color-extralight: #fff;
+  --color-light: #a6a6a6;
+  --color-medium: #161e3b;
+  --color-bold: #0b0f1e;
 }
 
 body {
