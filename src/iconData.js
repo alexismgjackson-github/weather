@@ -44,6 +44,8 @@ const getWeatherIcon = (text) => {
       return "/assets/icons/rainy.svg";
     case "Patchy light rain":
       return "/assets/icons/rainy.svg";
+    case "Patchy rain nearby":
+      return "/assets/icons/rainy.svg";
     case "Light rain":
       return "/assets/icons/rainy.svg";
     case "Moderate rain at times":
@@ -77,7 +79,7 @@ const getWeatherIcon = (text) => {
     case "Ice pellets":
       return "/assets/icons/pellets.svg";
     case "Light rain shower":
-      return "/assets/icons/rain.svg";
+      return "/assets/icons/rainy.svg";
     case "Moderate or heavy rain shower":
       return "/assets/icons/rainy.svg";
     case "Torrential rain shower":
