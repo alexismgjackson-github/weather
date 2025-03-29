@@ -27,7 +27,7 @@ export default function Header(props) {
         <button className="theme-mode-toggle-btn" onClick={toggleTheme}>
           <img
             className="theme-mode-icon"
-            src="public/assets/icons/thememode.svg"
+            src="/assets/icons/thememode.svg"
             alt="Theme mode icon"
             aria-label="Toggle light/dark theme mode"
           />
