@@ -52,5 +52,5 @@ I wanted to do my own take of this common yet classic portfolio project!
 
 ## FUTURE UPDATES
 
-- Add Fahrenheit/Celsius toggle button
-- Add Light/Dark mode toggle button
+- Add Fahrenheit/Celsius toggle buttons
+
