@@ -3,16 +3,19 @@ import getWeatherIcon from "/src/iconData.js";
 import "./WeatherCard.css";
 
 export default function WeatherCard(props) {
-  const [temperature, setTemperature] = useState(props.weather.fahrenheit); // default temperature (in fahrenheit)
-  const [feelsLike, setFeelsLike] = useState(props.weather.feels_like); // default feelsLike (in fahrenheit)
-  const [conversion, setConversion] = useState("fahrenheit"); // default conversion to fahrenheit (or F)
-  const [unit, setUnit] = useState("F"); // default unit to fahrenheit
+  const [temperature, setTemperature] = useState(props.weather.fahrenheit); // default temperature to weather data received (in fahrenheit)
+
+  const [feelsLike, setFeelsLike] = useState(props.weather.feels_like); // default feelsLike to weather data received (in fahrenheit)
+
+  const [conversion, setConversion] = useState("fahrenheit"); // default conversion state to fahrenheit (or F)
+
+  const [unit, setUnit] = useState("F"); // default unit state to fahrenheit
 
   // convert temperature between fahrenheit and celsius
 
   const convertUnit = (value) => {
     if (conversion === "fahrenheit") {
-      return value; // keep temperature as fahrenheit
+      return value; // default to fahrenheit
     } else if (conversion === "celsius") {
       return ((value - 32) * 5) / 9; // convert fahrenheit to celsius
     }
@@ -20,17 +23,18 @@ export default function WeatherCard(props) {
   };
 
   // toggle between fahrenheit and celsius mode
+
   const toggleUnitConversion = () => {
     const newUnitConversion =
-      conversion === "fahrenheit" ? "celsius" : "fahrenheit";
-    const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C";
-    setConversion(newUnitConversion);
-    setUnit(newUnit);
+      conversion === "fahrenheit" ? "celsius" : "fahrenheit"; // toggles between "fahrenheit" and "celsius"
+    const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C"; // toggles between "F" or "C"  temperature unit
+    setConversion(newUnitConversion); // updates the conversion state
+    setUnit(newUnit); // updates the unit state
   };
 
-  // convert temperatures when changing units
-  const convertedCurrentTemperature = convertUnit(temperature);
-  const convertedFeelsLike = convertUnit(feelsLike);
+  const convertedCurrentTemperature = convertUnit(temperature); // converts current temperature when changing between fahrenheit and celsius
+
+  const convertedFeelsLike = convertUnit(feelsLike); // converts feels like temperature when changing between fahrenheit and celsius
 
   return (
     <>
