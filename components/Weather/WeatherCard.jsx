@@ -7,9 +7,9 @@ export default function WeatherCard(props) {
 
   const [feelsLike, setFeelsLike] = useState(props.weather.feels_like); // default feelsLike to weather data received (in fahrenheit)
 
-  const [conversion, setConversion] = useState("fahrenheit"); // default conversion state to fahrenheit (or F)
+  const [conversion, setConversion] = useState("fahrenheit"); // default conversion state to fahrenheit
 
-  const [unit, setUnit] = useState("F"); // default unit state to fahrenheit
+  const [unit, setUnit] = useState("F"); // default unit state to fahrenheit (or F)
 
   // convert temperature between fahrenheit and celsius
 
