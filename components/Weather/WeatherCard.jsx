@@ -20,11 +20,11 @@ export default function WeatherCard(props) {
   };
 
   // toggle between fahrenheit and celsius mode
-  const toggleConversion = () => {
-    const newConversion =
+  const toggleUnitConversion = () => {
+    const newUnitConversion =
       conversion === "fahrenheit" ? "celsius" : "fahrenheit";
-    const newUnit = newConversion === "fahrenheit" ? "F" : "C";
-    setConversion(newConversion);
+    const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C";
+    setConversion(newUnitConversion);
     setUnit(newUnit);
   };
 
@@ -38,7 +38,7 @@ export default function WeatherCard(props) {
         <div className="weather-header">
           <button
             className="temperature-conversion-toggle-btn"
-            onClick={toggleConversion}
+            onClick={toggleUnitConversion}
           >
             {conversion === "fahrenheit" ? "Cels." : "Fahr."}
           </button>
