@@ -6,6 +6,7 @@ Weather is a fully responsive app allows the user to search the realtime weather
 
 - Real-time Weather List
 - Theme Mode Toggle
+- Unit Conversion Toggle
 
 ## TECHNOLOGIES
 
@@ -18,13 +19,14 @@ Weather is a fully responsive app allows the user to search the realtime weather
 
 ## WHY I BUILT THIS
 
-I wanted to do my own take of this common yet classic portfolio project!
+I wanted to do my own take on this classic portfolio project!
 
 ## WHAT I LEARNED
 
 ### _USESTATE_
 
 - Managing state to fetch weather data for the city entered by the user and handling errors
+- Convert unit of temperatures
 
 ### _USEEFFECT_
 
@@ -52,5 +54,5 @@ I wanted to do my own take of this common yet classic portfolio project!
 
 ## FUTURE UPDATES
 
-- Add Fahrenheit/Celsius toggle buttons
+- No future plans at this time
 
