@@ -39,6 +39,7 @@ export default function App() {
           setLoading(false);
         } else {
           // console.log(data);
+          // console.log("Rendered!");
           setWeatherData((prevData) => [
             // updates the weatherData state with a new weather entry that is fetched
             {
