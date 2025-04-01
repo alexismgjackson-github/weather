@@ -1,14 +1,74 @@
+import { useState, useEffect } from "react";
 import getWeatherIcon from "/src/iconData.js";
 import "./WeatherCard.css";
 
-export default function ForecastCard(props) {
+export default function WeatherCard(props) {
+  const [temperature, setTemperature] = useState(props.weather.fahrenheit); // default temperature (in fahrenheit)
+  const [feelsLike, setFeelsLike] = useState(props.weather.feels_like); // default feelsLike (in fahrenheit)
+  const [unit, setUnit] = useState("F"); // default to fahrenheit
+
+  // retrieve the current conversion from localStorage or default to 'fahrenheit'
+
+  const storedTemperature = localStorage.getItem("temperature");
+  const storedConversion = localStorage.getItem("conversion") || "fahrenheit";
+
+  const [conversion, setConversion] = useState(storedConversion);
+
+  // apply the conversion when the component mounts or the conversion changes
+
+  useEffect(() => {
+    if (storedTemperature) {
+      setTemperature(parseFloat(storedTemperature)); // parse stored temperature to float
+    }
+
+    if (storedConversion) {
+      setConversion(storedConversion); // set stored conversion unit
+    }
+  }, []); // only runs once when component mounts
+
+  // sync changes to temperature and conversion with localStorage
+
+  useEffect(() => {
+    localStorage.setItem("temperature", temperature);
+    localStorage.setItem("conversion", conversion);
+  }, [temperature, conversion]);
+
+  // function to convert temperature between fahrenheit and celsius
+
+  const convertUnit = (value) => {
+    if (conversion === "fahrenheit") {
+      return value; // keep the temperature as fahrenheit
+    } else if (conversion === "celsius") {
+      return ((value - 32) * 5) / 9; // convert fahrenheit to celsius
+    }
+    return value;
+  };
+
+  // Toggle between fahrenheit and celsius mode
+  const toggleConversion = () => {
+    setConversion((prevConversion) =>
+      prevConversion === "fahrenheit" ? "celsius" : "fahrenheit"
+    );
+
+    // Update unit when conversion changes
+
+    setUnit((prevUnit) => (prevUnit === "F" ? "C" : "F"));
+  };
+
+  const convertedCurrentTemperature = convertUnit(temperature); // convert the current temperature when changing units
+  const convertedFeelsLike = convertUnit(feelsLike); // convert the feels like temperature when changing units
+
   return (
     <>
       <li className="weather-card">
         <div className="weather-header">
-          <span className="location-name">
-            {props.weather.location}, {props.weather.country}
-          </span>
+          <button
+            className="temperature-conversion-toggle-btn"
+            onClick={toggleConversion}
+          >
+            {conversion === "fahrenheit" ? "Cels." : "Fahr."}
+          </button>
+          <span className="location-name">{props.weather.location}</span>
           <button
             className="remove-weather-btn"
             aria-label="Remove this city weather"
@@ -24,7 +84,9 @@ export default function ForecastCard(props) {
         <div className="weather-primary">
           <div className="weather-primary-temperature-and-description">
             <span className="weather-temperature">
-              {props.weather.fahrenheit}&deg;F
+              {" "}
+              {convertedCurrentTemperature.toFixed(1)}&deg;{unit}{" "}
+              {/* displaying current temperature values in a user-friendly format */}
             </span>
           </div>
           <span className="weather-condition">
@@ -48,7 +110,8 @@ export default function ForecastCard(props) {
             <span className="feels-like-text">Feels like</span>
             <div className="feels-like-temperature">
               {" "}
-              {props.weather.feels_like}&deg;F
+              {convertedFeelsLike.toFixed(1)}&deg;{unit}
+              {/* displaying feels like temperature values in a user-friendly format */}
             </div>
           </div>
           <div className="humidity-container">

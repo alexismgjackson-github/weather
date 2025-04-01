@@ -41,6 +41,7 @@ export default function Main(props) {
                 key={weather.id}
                 weather={weather}
                 deleteWeather={props.deleteWeather}
+                unit={props.unit}
               />
             ))}
           </ul>

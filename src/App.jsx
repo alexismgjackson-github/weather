@@ -43,9 +43,7 @@ export default function App() {
             // updates the weatherData state with a new weather entry that is fetched
             {
               location: data.location.name,
-              country: data.location.country,
               fahrenheit: data.current.temp_f,
-              celsius: data.current.temp_c,
               text: data.current.condition.text,
               feels_like: data.current.feelslike_f,
               visibility: data.current.vis_miles,
