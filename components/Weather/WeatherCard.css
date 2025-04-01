@@ -14,6 +14,11 @@
   justify-content: space-between;
 }
 
+.location-name {
+  font-size: 2rem;
+  font-style: italic;
+}
+
 .remove-weather-btn {
   align-items: center;
   background-color: inherit;
@@ -39,6 +44,7 @@
 
 .weather-temperature {
   font-size: 5.5rem;
+ 
 }
 
 .weather-condition {
