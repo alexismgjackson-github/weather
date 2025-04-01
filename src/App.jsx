@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 } from "uuid"; // generates random UUIDs from the uuid package
 import Header from "../components/Layout/Header";
 import Main from "../components/Layout/Main";
 
