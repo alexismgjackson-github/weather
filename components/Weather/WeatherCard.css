@@ -38,10 +38,6 @@
   width: 2.6rem;
 }
 
-.location-name {
-  font-size: 1.8rem;
-}
-
 .weather-primary-temperature-and-description {
   display: flex;
   flex-direction: column;
