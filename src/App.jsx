@@ -27,6 +27,7 @@ export default function App() {
   const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
   // fetches weather data from a weather API based on the user's input city
+  // this function is tied to a user action (form submission) so it doesn't need to be inside a useEffect hook
 
   const fetchCityWeather = (event) => {
     event.preventDefault();
