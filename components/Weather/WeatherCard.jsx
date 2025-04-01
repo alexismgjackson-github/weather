@@ -28,6 +28,7 @@ export default function WeatherCard(props) {
     const newUnitConversion =
       conversion === "fahrenheit" ? "celsius" : "fahrenheit"; // toggles between "fahrenheit" and "celsius"
     const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C"; // toggles between "F" or "C"  temperature unit
+
     setConversion(newUnitConversion); // updates the conversion state
     setUnit(newUnit); // updates the unit state
   };
