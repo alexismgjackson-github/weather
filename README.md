@@ -5,6 +5,7 @@ Weather is a fully responsive app allows the user to search the realtime weather
 ## FEATURES
 
 - Real-time Weather List
+- Theme Mode Toggle
 
 ## TECHNOLOGIES
 
@@ -28,6 +29,7 @@ I wanted to do my own take of this common yet classic portfolio project!
 ### _USEEFFECT_
 
 - Peristing weather data in LocalStorage
+- Persisting theme mode in LocalStorage
 
 ### _RESPONSIVE WEB DESIGN_
 
@@ -50,5 +52,5 @@ I wanted to do my own take of this common yet classic portfolio project!
 
 ## FUTURE UPDATES
 
-- Add Fahrenheit/Celsius toggle button
-- Add Light/Dark mode toggle button
+- Add Fahrenheit/Celsius toggle buttons
+
