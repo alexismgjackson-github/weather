@@ -45,7 +45,7 @@ export default function WeatherCard(props) {
             className="temperature-conversion-toggle-btn"
             onClick={toggleUnitConversion}
           >
-            {conversion === "fahrenheit" ? "Cels." : "Fahr."}
+            {conversion === "fahrenheit" ? "Cel." : "Fah."}
           </button>
           <span className="location-name">{props.weather.location}</span>
           <button
