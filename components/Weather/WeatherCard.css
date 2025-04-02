@@ -4,7 +4,7 @@
   border-radius: 0.5rem;
   display: grid;
   gap: 3rem;
-  padding: 1.75rem;
+  padding: 1.5rem;
 }
 
 .weather-header,
@@ -44,7 +44,7 @@
 }
 
 .weather-temperature {
-  font-size: 5.5rem;
+  font-size: 5.2rem;
 }
 
 .weather-condition {
