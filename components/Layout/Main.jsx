@@ -15,8 +15,8 @@ export default function Main(props) {
             <input
               type="text"
               className="city-input"
-              placeholder="Type in a city..."
-              aria-label="Type in a city to get the realtime weather"
+              placeholder="Type in a city here..."
+              aria-label="Type in a city here to get it's realtime weather"
               onChange={props.handleInputChange}
               value={props.city}
               required
