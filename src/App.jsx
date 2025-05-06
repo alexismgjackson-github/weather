@@ -1,48 +1,49 @@
 import { useState, useEffect } from "react";
-import { v4 as uuidv4 } from "uuid"; // generates random UUIDs from the uuid package
+import { v4 as uuidv4 } from "uuid"; // UUID for uniquely identifying weather entries
 import Header from "../components/Layout/Header";
 import Main from "../components/Layout/Main";
 
+// Root component of the application
 export default function App() {
-  const [city, setCity] = useState(""); // holds the name of the city that the user inputs to fetch weather data
+  // State for user-inputted city
+  const [city, setCity] = useState("");
 
-  // holds an array of weather data for different cities
-  // initializes with the data from localStorage (if it exists)
-  // defaults to an empty array (if it does not exist)
-
+  // Weather data from localStorage (if available), or an empty array
   const [weatherData, setWeatherData] = useState(
     localStorage.getItem("weather")
       ? JSON.parse(localStorage.getItem("weather"))
       : []
   );
 
-  const [loading, setLoading] = useState(true); // boolean to indicate whether the app is fetching weather data
+  // Loading state to indicate if fetch is in progress
+  const [loading, setLoading] = useState(true);
 
-  const [error, setError] = useState(null); // holds any error that occurs during the fetch operation
+  // Error state to store fetch errors
+  const [error, setError] = useState(null);
 
-  const [inputMessage, setInputMessage] = useState(""); // holds a message for the form
+  // Message shown below the input box (e.g., validation error)
+  const [inputMessage, setInputMessage] = useState("");
 
+  // API key for weather API (stored in environment variable)
   const apiKey = import.meta.env.VITE_FORECAST_API_KEY;
 
+  // Weather API URL for the given city
   const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${city}`;
 
-  // fetches weather data from a weather API based on the user's input city
-  // this function is tied to a form submission so it doesn't need to be inside a useEffect hook
-
+  // Form submission handler to fetch weather data
   const fetchCityWeather = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission
 
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
-          setInputMessage("Please enter a valid city"); // if there is an error with fetching data, it displays this message
+          // Show error message if city is invalid
+          setInputMessage("Please enter a valid city");
           setLoading(false);
         } else {
-          // console.log(data);
-          // console.log("Rendered!");
+          // Add new weather data to the top of the array
           setWeatherData((prevData) => [
-            // updates the weatherData state with a new weather entry that is fetched
             {
               location: data.location.name,
               fahrenheit: data.current.temp_f,
@@ -50,7 +51,7 @@ export default function App() {
               feels_like: data.current.feelslike_f,
               visibility: data.current.vis_miles,
               humidity: data.current.humidity,
-              id: uuidv4(),
+              id: uuidv4(), // Assign unique ID to each weather entry
             },
             ...prevData,
           ]);
@@ -58,32 +59,32 @@ export default function App() {
         }
       })
       .catch((error) => {
+        // Handle fetch/network errors
         setError(error);
         setLoading(false);
       });
 
+    // Reset input field and message after submission
     setCity("");
     setInputMessage("");
   };
 
-  // updates the city state with the current value of the input field
-
+  // Update city state as user types
   const handleInputChange = (event) => {
     setCity(event.target.value);
   };
 
-  // functionality to delete a city's weather data from the displayed list
-
+  // Remove a city's weather data by its ID
   const deleteWeather = (id) => {
     setWeatherData(weatherData.filter((weather) => weather.id !== id));
   };
 
-  // makes the weather data persists in the browser even after page reload
-
+  // Save weather data to localStorage whenever it changes
   useEffect(() => {
     localStorage.setItem("weather", JSON.stringify(weatherData));
   }, [weatherData]);
 
+  // Render Header and Main components, passing necessary props
   return (
     <>
       <Header />

@@ -1,21 +1,20 @@
 import { useState, useEffect } from "react";
-import "./Header.css";
+import "./Header.css"; // Import styles specific to the Header component
 
 export default function Header() {
-  // retrieve the current theme from localStorage or default to 'dark'
-
+  // Get the stored theme from localStorage, default to "dark" if not set
   const storedTheme = localStorage.getItem("theme") || "dark";
+
+  // State to track the current theme
   const [theme, setTheme] = useState(storedTheme);
 
-  // apply the theme when the component mounts or the theme changes
-
+  // Side effect to update HTML theme attribute and save to localStorage whenever theme changes
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("theme", theme); // save the current theme in localStorage
-  }, [theme]); // effect runs every time `theme` changes
+    document.documentElement.setAttribute("data-theme", theme); // Applies theme to document
+    localStorage.setItem("theme", theme); // Persist theme in localStorage
+  }, [theme]);
 
-  // toggle between light and dark mode
-
+  // Function to toggle between dark and light theme
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "dark" ? "light" : "dark"));
   };
@@ -23,7 +22,10 @@ export default function Header() {
   return (
     <>
       <header>
+        {/* Logo or brand title */}
         <span className="logo">Weather</span>
+
+        {/* Button to toggle theme */}
         <button className="theme-mode-toggle-btn" onClick={toggleTheme}>
           <img
             className="theme-mode-icon"

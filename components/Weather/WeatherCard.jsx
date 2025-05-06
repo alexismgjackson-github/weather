@@ -1,57 +1,61 @@
 import { useState } from "react";
-import getWeatherIcon from "/src/iconData.js";
-import "./WeatherCard.css";
+import getWeatherIcon from "/src/iconData.js"; // Utility function to get weather icon based on condition
+import "./WeatherCard.css"; // Styles for the weather card
 
+// Functional component to render weather information for a single location
 export default function WeatherCard(props) {
-  const [temperature, setTemperature] = useState(props.weather.fahrenheit); // default temperature to weather data received (in fahrenheit)
+  // Store temperature in Fahrenheit (default)
+  const [temperature, setTemperature] = useState(props.weather.fahrenheit);
 
-  const [feelsLike, setFeelsLike] = useState(props.weather.feels_like); // default feelsLike to weather data received (in fahrenheit)
+  // Store "feels like" temperature
+  const [feelsLike, setFeelsLike] = useState(props.weather.feels_like);
 
-  const [conversion, setConversion] = useState("fahrenheit"); // default conversion state to fahrenheit
+  // Tracks current temperature unit ("fahrenheit" or "celsius")
+  const [conversion, setConversion] = useState("fahrenheit");
 
-  const [unit, setUnit] = useState("F"); // default unit state to fahrenheit (or F)
+  // Display unit symbol ("F" or "C")
+  const [unit, setUnit] = useState("F");
 
-  // convert temperature between fahrenheit and celsius
-
+  // Converts temperature value based on selected unit
   const convertUnit = (value) => {
     if (conversion === "fahrenheit") {
-      return value; // default to fahrenheit
+      return value; // No conversion needed
     } else if (conversion === "celsius") {
-      return ((value - 32) * 5) / 9; // convert fahrenheit to celsius
+      return ((value - 32) * 5) / 9; // Convert to Celsius
     }
     return value;
   };
 
-  // toggle between fahrenheit and celsius mode
-
+  // Toggle temperature unit between Fahrenheit and Celsius
   const toggleUnitConversion = () => {
     const newUnitConversion =
-      conversion === "fahrenheit" ? "celsius" : "fahrenheit"; // toggles between "fahrenheit" and "celsius"
-    const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C"; // toggles between "F" or "C"  temperature unit
+      conversion === "fahrenheit" ? "celsius" : "fahrenheit";
+    const newUnit = newUnitConversion === "fahrenheit" ? "F" : "C";
 
-    setConversion(newUnitConversion); // updates the conversion state
-    setUnit(newUnit); // updates the unit state
+    setConversion(newUnitConversion); // Update conversion state
+    setUnit(newUnit); // Update unit symbol
   };
 
-  const convertedCurrentTemperature = convertUnit(temperature); // converts current temperature when changing between fahrenheit and celsius
-
-  const convertedFeelsLike = convertUnit(feelsLike); // converts feels like temperature when changing between fahrenheit and celsius
+  // Convert temperatures using current unit preference
+  const convertedCurrentTemperature = convertUnit(temperature);
+  const convertedFeelsLike = convertUnit(feelsLike);
 
   return (
     <>
       <li className="weather-card">
+        {/* Header section: unit toggle, location name, and remove button */}
         <div className="weather-header">
           <button
             className="temperature-conversion-toggle-btn"
             onClick={toggleUnitConversion}
           >
-            {conversion === "fahrenheit" ? "Cel." : "Fah."}
+            {conversion === "fahrenheit" ? "Cel." : "Fah."} {/* Toggle label */}
           </button>
           <span className="location-name">{props.weather.location}</span>
           <button
             className="remove-weather-btn"
             aria-label="Remove this city weather"
-            onClick={() => props.deleteWeather(props.weather.id)} // remove a specific weather entry by filtering out the entry with the matching id
+            onClick={() => props.deleteWeather(props.weather.id)} // Call parent delete function
           >
             <img
               className="remove-icon"
@@ -60,24 +64,30 @@ export default function WeatherCard(props) {
             />
           </button>
         </div>
+
+        {/* Main temperature and condition display */}
         <div className="weather-primary">
           <div className="weather-primary-temperature-and-description">
             <span className="weather-temperature">
               {" "}
               {convertedCurrentTemperature.toFixed(1)}&deg;{unit}
-              {/* displaying current temperature values in a user-friendly format */}
             </span>
           </div>
+
+          {/* Weather icon and description */}
           <span className="weather-condition">
             <img
-              src={getWeatherIcon(props.weather.text)} // gets the corresponding weather icon path based on the real-time weather
+              src={getWeatherIcon(props.weather.text)} // Get icon based on weather text
               alt="Current weather icon"
               className="weather-condition-icon"
             />
             <span className="weather-description">{props.weather.text}</span>
           </span>
         </div>
+
+        {/* Secondary weather metrics: feels like, humidity, visibility */}
         <div className="weather-secondary">
+          {/* Feels like temperature */}
           <div className="feels-like-container">
             <div className="feels-like">
               <img
@@ -90,9 +100,10 @@ export default function WeatherCard(props) {
             <div className="feels-like-temperature">
               {" "}
               {convertedFeelsLike.toFixed(1)}&deg;{unit}
-              {/* displaying feels like temperature values in a user-friendly format */}
             </div>
           </div>
+
+          {/* Humidity */}
           <div className="humidity-container">
             <div className="humidity">
               <img
@@ -107,6 +118,8 @@ export default function WeatherCard(props) {
               {props.weather.humidity}&#37;
             </div>
           </div>
+
+          {/* Visibility */}
           <div className="visibility-container">
             <div className="visibility">
               <img
