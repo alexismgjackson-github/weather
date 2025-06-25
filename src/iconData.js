@@ -40,6 +40,7 @@ const getWeatherIcon = (text) => {
 
     // Thunderstorm-related conditions
     case "Thundery outbreaks possible":
+    case "Thundery outbreaks in nearby":
     case "Torrential rain shower":
     case "Patchy light rain with thunder":
       return "/assets/icons/storm.svg";
